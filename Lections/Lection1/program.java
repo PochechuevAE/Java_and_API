@@ -54,7 +54,7 @@ public class program {
             }
             System.out.println();
         }
-
+        System.out.println();
         int [][] mass = new int[3][5];
         for (int a = 0; a < mass.length; a++){
             for (int j = 0; j < mass[a].length; j++){
@@ -73,8 +73,9 @@ public class program {
         System.out.printf(" Привет, %s!", name);
         iScanner.close();
         System.out.println();
-        functions.sayHi();        
-    
+        functions.sayHi();   //подключились к файлу functions и оттуда взяли sayHi функцию     
+        System.out.println(functions.sum(1, 3));
+        System.out.println(functions.factor(5));
 
 
 
