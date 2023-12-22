@@ -11,8 +11,8 @@ public class Name {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in, "ibm866");
         System.out.println("Введите своё имя: ");
-        String text = scanner.nextLine();
-        System.out.printf("Привет, %s", text);
+        String name = scanner.nextLine();
+        System.out.printf("Привет, %s", name);
         scanner.close();
     }
 }
