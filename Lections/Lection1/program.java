@@ -72,7 +72,8 @@ public class program {
         String name = iScanner.nextLine(); // nextInt/ nextDouble...
         System.out.printf(" Привет, %s!", name);
         iScanner.close();
-                
+        System.out.println();
+        functions.sayHi();        
     
 
 
