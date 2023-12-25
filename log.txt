@@ -1,0 +1,4 @@
+дек. 25, 2023 5:07:24 PM Lections.lection2.Ex005_Logger main
+WARNING: test logger 1
+дек. 25, 2023 5:07:24 PM Lections.lection2.Ex005_Logger main
+INFO: test logger 2

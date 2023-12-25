@@ -17,8 +17,8 @@ public class Ex005_Logger {
         //fh.setFormatter(xml);
         
         //logger.setLevel(Level.INFO);
-        logger.log(Level.WARNING, "Тестовое логирование 1");
-        logger.info("Тестовое логирование 2");
+        logger.log(Level.WARNING, "test logger 1");
+        logger.info("test logger 2");
 
     }
 }
