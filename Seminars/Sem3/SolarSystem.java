@@ -34,6 +34,24 @@ public class SolarSystem {
         System.out.println();
         countOfNames(names, list);        
 
+        Collections.sort(list);
+        System.out.println("Отсортированный список: ");
+        System.out.println(list);
+        System.out.println("Измененный список с удалением повторений: ");
+        RemoweRepitPlanet(list);
+        System.out.println(list);
+    }
+
+    private static void RemoweRepitPlanet(ArrayList<String> list) {
+        for (int i = 0; i < list.size(); i++){
+            String planet = list.get(i);
+            for (int j = i + 1; j < list.size(); j++){
+                if (list.get(j).equals(planet)){
+                    list.remove(j);
+                    j--;
+                }
+            } 
+        }
     }
 
     private static void countOfNames(ArrayList<String> names, ArrayList<String> list) {
