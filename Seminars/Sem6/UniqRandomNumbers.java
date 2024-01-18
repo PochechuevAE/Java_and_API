@@ -7,21 +7,34 @@
 // процент уникальных чисел = количество уникальных чисел * 100 / общее
 // количество чисел в массиве.
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class UniqRandomNumbers {
     public static void main(String[] args) {
-        int size = 1000;
+        int size = 100;
         int[] numbers = new int[size];
-        fillArrayRandomNums(numbers, 25);
+        fillArrayRandomNums(numbers, 100);
+        System.out.println("Процент уникальных чисел равен: "+ getPercentUniqNums(numbers) + "%");
     }
 
     public static void fillArrayRandomNums(int[] array, int max) {
         Random rnd = new Random();
 
-
-        for(int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             array[i] = rnd.nextInt(max);
         }
     }
+
+    public static double getPercentUniqNums(int[] array) {
+        Set<Integer> uniqNums = new HashSet<Integer>();
+        for (Integer num : array) {
+            uniqNums.add(num);
+        }
+
+        double percentUniqNums = (double) uniqNums.size() * 100 / array.length;
+        return percentUniqNums;
+    }
+
 }
