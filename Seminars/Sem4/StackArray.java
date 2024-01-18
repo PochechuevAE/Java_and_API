@@ -1,6 +1,3 @@
-package Seminars.Sem4;
-
-
 public class StackArray {
     static int capacity = 0;
     static int top = -1;

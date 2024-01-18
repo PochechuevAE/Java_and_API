@@ -7,8 +7,6 @@
 // 3. Если введено print~num, выводит строку из позиции num в связном
 // списке и удаляет её из списка.
 
-package Seminars.Sem4;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
