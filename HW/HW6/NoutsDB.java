@@ -41,57 +41,79 @@ public class NoutsDB {
 
         Map<String, Object> filters = new HashMap<>();
 
-        System.out.println();
-        System.out.println("Введите цифру, соответствующую необходимому критерию:\n" +
-                "1 - ОЗУ\n" +
-                "2 - Объем ЖД\n" +
-                "3 - Операционная система\n" +
-                "4 - Цвет\n" +
-                "5 - Цена\n" +
-                "6 - Производитель");
+        boolean continueSorting = false;
 
-        String userInput = scanner.nextLine();
-        if (criteriaMap.containsKey(userInput)) {
-            String criterion = criteriaMap.get(userInput);
-
+        do {
             System.out.println();
-            System.out.println("Введите минимальное значение для критерия " + criterion + ":");
-            String minInput = scanner.nextLine();
+            System.out.println("Введите цифру, соответствующую необходимому критерию:\n" +
+                    "1 - ОЗУ\n" +
+                    "2 - Объем ЖД\n" +
+                    "3 - Операционная система\n" +
+                    "4 - Цвет\n" +
+                    "5 - Цена\n" +
+                    "6 - Производитель");
 
-            // Добавляем критерий и минимальное значение в фильтры
-            filters.put(criterion, minInput);
+            String userInput = scanner.nextLine();
+            if (criteriaMap.containsKey(userInput)) {
+                String criterion = criteriaMap.get(userInput);
 
-            // Фильтруем и сразу добавляем в TreeSet, который автоматически отсортирует элементы
-            TreeSet<Nouts> filteredLaptops = laptops.stream()
-                    .filter(nout -> {
-                        switch (criterion) {
-                            case "ram":
-                                return nout.getRam() >= Integer.parseInt(minInput);
-                            case "hardDiskSpace":
-                                return nout.getHardDiskSpace() >= Integer.parseInt(minInput);
-                            case "operatingSystem":
-                                return nout.getOperatingSystem().equalsIgnoreCase(minInput);
-                            case "color":
-                                return nout.getColor().equalsIgnoreCase(minInput);
-                            case "price":
-                                return nout.getPrice() >= Integer.parseInt(minInput);
-                            case "producer":
-                                return nout.getProducer().equalsIgnoreCase(minInput);
-                            default:
-                                return false;
-                        }
-                    })
-                    .collect(Collectors.toCollection(TreeSet::new));
+                System.out.println();
+                System.out.println("Введите минимальное значение для критерия " + criterion + ":");
+                String minInput = scanner.nextLine();
 
-            // Выводим результаты фильтрации
-            System.out.println("Результаты фильтрации (по цене по возрастанию):");
-            for (Nouts laptop : filteredLaptops) {
-                System.out.println(laptop);
+                
+                filters.put(criterion, minInput);
+
+                
+                TreeSet<Nouts> filteredLaptops = laptops.stream()
+                        .filter(nout -> {
+                            switch (criterion) {
+                                case "ram":
+                                    return nout.getRam() >= Integer.parseInt(minInput);
+                                case "hardDiskSpace":
+                                    return nout.getHardDiskSpace() >= Integer.parseInt(minInput);
+                                case "operatingSystem":
+                                    return nout.getOperatingSystem().equalsIgnoreCase(minInput);
+                                case "color":
+                                    return nout.getColor().equalsIgnoreCase(minInput);
+                                case "price":
+                                    return nout.getPrice() >= Integer.parseInt(minInput);
+                                case "producer":
+                                    return nout.getProducer().equalsIgnoreCase(minInput);
+                                default:
+                                    return false;
+                            }
+                        })
+                        .collect(Collectors.toCollection(TreeSet::new));
+
+                
+                System.out.println();
+                System.out.println("Результаты фильтрации (по цене по возрастанию):");
+                for (Nouts laptop : filteredLaptops) {
+                    System.out.println(laptop);
+                }
+
+                
+                continueSorting = askForNewSorting(scanner, filters);
+
+            } else {
+                System.out.println("Некорректный выбор критерия.");
+                continueSorting = false;
             }
-        } else {
-            System.out.println("Некорректный выбор критерия.");
+
+        } while (continueSorting);
+    }
+
+    public static boolean askForNewSorting(Scanner scanner, Map<String, Object> filters) {
+        System.out.println();
+        System.out.println("Хотите выполнить новую сортировку? (1 - Да, 2 - Нет, выйти из программы)");
+        String choice = scanner.nextLine();
+        boolean continueSorting = choice.equals("1");
+        if (!continueSorting) {
+            System.out.println();
+            System.out.println("Программа завершена.");
         }
-        scanner.close();
+        return continueSorting;
     }
 
 }

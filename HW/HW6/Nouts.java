@@ -83,7 +83,7 @@ public class Nouts implements Comparable<Nouts>{
 
     @Override
     public int compareTo(Nouts other) {
-        // Сравниваем ноутбуки по цене
+        
         return Integer.compare(this.price, other.price);
     }
 }
