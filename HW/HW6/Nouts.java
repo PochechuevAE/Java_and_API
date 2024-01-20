@@ -58,7 +58,7 @@ public class Nouts {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Название: " + name.toString() + ", цена: " + price + "руб, производитель: " + producer.toString() + ", оперативная система: " + operatingSystem.toString() + ", Оперативная память: " + ram +  "ГБ, Объём жесткого диска: " + hardDiskSpace + "ГБ, цвет: " + color.toString();
     }
 
     @Override

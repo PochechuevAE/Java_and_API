@@ -1,3 +1,5 @@
+package Seminars.Sem4;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
