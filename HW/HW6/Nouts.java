@@ -1,6 +1,9 @@
 package HW.HW6;
 
-public class Nouts {
+import java.util.Objects;
+
+
+public class Nouts implements Comparable<Nouts>{
     private String name;
     private int price;
     private String producer;
@@ -58,16 +61,29 @@ public class Nouts {
 
     @Override
     public String toString() {
-        return "Название: " + name.toString() + ", цена: " + price + "руб, производитель: " + producer.toString() + ", оперативная система: " + operatingSystem.toString() + ", Оперативная память: " + ram +  "ГБ, Объём жесткого диска: " + hardDiskSpace + "ГБ, цвет: " + color.toString();
+        return "Название: " + name.toString() + ", цена: " + price + " руб, производитель: " + producer.toString() + ", оперативная система: " + operatingSystem.toString() + ", Оперативная память: " + ram +  "ГБ, Объём жесткого диска: " + hardDiskSpace + "ГБ, цвет: " + color.toString();
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj){
+            return true;
+        }
+        if ((obj == null) || (getClass() != obj.getClass())){
+            return false;
+        }
+        Nouts nout = (Nouts) obj;
+        return name.equals(nout.name) && color.equals(nout.color) && price == nout.price && producer.equals(nout.producer) && operatingSystem.equals(nout.operatingSystem) && ram == nout.ram && hardDiskSpace == nout.hardDiskSpace;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(name, color, price, producer, operatingSystem, ram, hardDiskSpace);
+    }
+
+    @Override
+    public int compareTo(Nouts other) {
+        // Сравниваем ноутбуки по цене
+        return Integer.compare(this.price, other.price);
     }
 }
